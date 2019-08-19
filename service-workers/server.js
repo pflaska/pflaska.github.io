@@ -5,8 +5,11 @@ var https = require('https');
 var fs = require('fs');
 var webPush = require('web-push');
 
-var privateKey  = fs.readFileSync('/private/etc/apache2/localhost-key.pem', 'utf8');
-var certificate = fs.readFileSync('/private/etc/apache2/localhost-cert.pem', 'utf8');
+var privateKey  = fs.readFileSync('/opt/code2cloud/etc/ssh-key.pem', 'utf8');
+var certificate = fs.readFileSync('/opt/code2cloud/etc/localhost.crt', 'utf8');
+// var privateKey  = fs.readFileSync('/private/etc/apache2/localhost-key.pem', 'utf8');
+// var certificate = fs.readFileSync('/private/etc/apache2/localhost-cert.pem', 'utf8');
+//
 var credentials = { key: privateKey, cert: certificate };
 var httpsServer = https.createServer(credentials, app);
 var port = 3012;
@@ -14,7 +17,9 @@ var port = 3012;
 var subscriptions = [];
 var pushInterval = 10;
 
-webPush.setGCMAPIKey(/*GCM API KEY*/);
+// webPush.setGCMAPIKey(/*GCM API KEY*/);
+webPush.setGCMAPIKey("829144521737");
+
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
