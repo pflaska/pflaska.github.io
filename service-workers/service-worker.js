@@ -1,3 +1,5 @@
+console.log("Jizda");
+
 var cacheName = 'notifications';
 
 self.addEventListener('install', function(event) {
